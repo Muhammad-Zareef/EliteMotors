@@ -14,7 +14,7 @@ let cars = {
             model: "S 450 4MATIC Luxury",
             year: 2024,
             price: "PKR 8 crore",
-            url: "https://cache3.pakwheels.com/system/car_generation_pictures/6455/medium/Mercedes_Benz_S-class.jpg?1654147957"
+            url: "https://cache3.pakwheels.com/system/car_generation_pictures/9225/original/Cover.jpg?1754558223"
         },
         "Benz GLB Class": {
             name: "Mercedes Benz GLB Class",
@@ -38,7 +38,7 @@ let cars = {
             model: "M50",
             year: 2024,
             price: "PKR 4.2 crore",
-            url: "https://cache1.pakwheels.com/system/car_generation_pictures/6044/medium/BMW_i4_-_PNG.png?1637071894",
+            url: "https://cache4.pakwheels.com/system/car_generation_pictures/9006/original/Cover.jpg?1750832729",
         },
         "2 Series": {
             name: "BMW 2 Series",
@@ -66,14 +66,14 @@ let cars = {
             model: "eDrive40 M Sport",
             year: 2025,
             price: "PKR 4.52 crore",
-            url: "https://cache1.pakwheels.com/system/car_generation_pictures/7707/medium/BMW_i5.png?1712564911",
+            url: "https://cache2.pakwheels.com/system/car_generation_pictures/8990/original/Cover.jpg?1750830471",
         },
         "7 Series": {
             name: "BMW 7 Series",
             model: "i7 xDrive60 Excellence",
             year: 2024,
             price: "PKR 8.08 crore",
-            url: "https://cache1.pakwheels.com/system/car_generation_pictures/7284/medium/1.jpg?1672832481",
+            url: "https://cache2.pakwheels.com/system/car_generation_pictures/9012/original/Cover.jpg?1750833163",
         },
         X5: {
             name: "BMW X5",
@@ -259,7 +259,7 @@ let cars = {
             model: "i-VTEC S",
             year: 2024,
             price: "PKR 63.0 lacs",
-            url: "https://cache1.pakwheels.com/system/car_generation_pictures/6430/original/Honda_BRV_Front.jpg?1652159445",
+            url: "https://cache3.pakwheels.com/system/car_generation_pictures/9165/original/Cover.jpg?1754368196",
         },
         "HR-V": {
             name: "Honda HR-V",
@@ -290,7 +290,7 @@ let cars = {
             model: "VXL AGS",
             year: 2024,
             price: "PKR 30.45 lacs",
-            url: "https://cache4.pakwheels.com/system/car_generation_pictures/6013/medium/Suzuki_Alto_-_PNG.png?1635945100",
+            url: "https://cache1.pakwheels.com/system/car_generation_pictures/8765/original/Cover.jpg?1746011563",
         },
         Swift: {
             name: "Suzuki Swift",
@@ -321,7 +321,7 @@ let cars = {
             model: "EARTH",
             year: 2024,
             price: "PKR 2.35 crore",
-            url: "https://cache3.pakwheels.com/system/car_generation_pictures/7884/medium/Kia_EV5.jpg?1735285514"
+            url: "https://cache4.pakwheels.com/system/car_generation_pictures/8818/original/Cover.jpg?1746442671"
         },
         Carnival: {
             name: "KIA Carnival",
@@ -366,7 +366,7 @@ let cars = {
             model: "GT (Dual)",
             year: 2025,
             price: "PKR 3 crore",
-            url: "https://cache1.pakwheels.com/system/car_generation_pictures/7782/medium/mg-cyberster-rwd-specs-features-removebg-preview.png?1730096831"
+            url: "https://cache3.pakwheels.com/system/car_generation_pictures/8778/original/Cover.jpg?1746017676"
         },
         "5 EV": {
             name: "MG 5 EV",
@@ -394,7 +394,7 @@ let cars = {
             model: "PHEV",
             year: 2022,
             price: "PKR 94.99 lacs",
-            url: "https://cache2.pakwheels.com/system/car_generation_pictures/5327/medium/hs.jpg?1600434088"
+            url: "https://cache4.pakwheels.com/system/car_generation_pictures/9075/original/Cover_%287%29.jpg?1753359389"
         },
     },
 };
@@ -408,9 +408,7 @@ function displayAllBrands(allBrands) {
 displayAllBrands(cars);
 
 function displayModel(model) {
-
     let cardContainer = document.getElementById("cards-container");
-
     cardContainer.innerHTML += `
     <div class="card">
         <img src="${model.url}" class="card-img-top" alt=">${model.name}">
@@ -435,6 +433,7 @@ let brands = document.getElementById("selectCarBrand");
 function handleBrandChange() {
     let brand = brands.value;
     removeAllCards();
+    if (brand === 'all') displayAllBrands(cars);
     displayBrand(cars[brand]);
     addModelOptions(cars[brand]);
 }
@@ -448,11 +447,8 @@ function handleModelChange() {
 }
 
 function addBrandOptions(carBrands) {
-
     let brandOptionId = document.getElementById("selectCarBrand");
-
-    brandOptionId.innerHTML = `<option selected disabled>Select Car Brand</option>`;
-
+    brandOptionId.innerHTML = `<option value="all" selected>Select All Brands</option>`;
     for(let key in carBrands) {
         brandOptionId.innerHTML += `<option value="${key}">${key}</option>`;
     }
@@ -461,11 +457,8 @@ function addBrandOptions(carBrands) {
 addBrandOptions(cars);
 
 function addModelOptions(carModels) {
-
     let modelOptionId = document.getElementById("selectCarModel");
-
     modelOptionId.innerHTML = `<option selected disabled>Select Car Model</option>`;
-
     for(let key in carModels) {
         modelOptionId.innerHTML += `<option value="${key}">${key}</option>`;
     }
